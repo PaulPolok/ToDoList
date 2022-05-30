@@ -1,10 +1,10 @@
-#To-do List
+# To-do List
 
-##Demo
+## Demo
 
-(https://paulpolok.github.io/ToDoList/index.html "To-do list by Paweł Polok")
+[To-do list by Paweł Polok](https://paulpolok.github.io/ToDoList/index.html)
 
-##Description
+## Description
 
 This is my project of To-do List realised during **YouCode** course.
 Techologies used in this project: HTML with BEM convenction, CSS and JavaScript.
