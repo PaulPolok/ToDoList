@@ -1,7 +1,8 @@
 #To-do List
+
 ##Demo
 
-(https://paulpolok.github.io/ToDoList/index.html "To-do list by Paweł Polok"
+(https://paulpolok.github.io/ToDoList/index.html "To-do list by Paweł Polok")
 
 ##Description
 
