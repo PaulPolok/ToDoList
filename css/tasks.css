@@ -32,6 +32,7 @@
     padding: 0;
     border-radius: 3px;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .tasks__button--toggleDone {
@@ -50,10 +51,12 @@
 .tasks__button--remove {
     background: rgb(184, 0, 0);
     border-radius: 3px;
+    
 }
 
 .tasks__button--remove:hover {
-    background: rgb(140, 13, 13);
+    background: hsl(0, 100%, 50%);
+    
 }
 
 .tasks__button--remove:active {
