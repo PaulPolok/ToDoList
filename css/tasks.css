@@ -5,6 +5,9 @@
     font-size: 18px;
     
 }
+.tasks--hidden{
+    display:none;
+}
 
 .tasks__item {
     display: grid;

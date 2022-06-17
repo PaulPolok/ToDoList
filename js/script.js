@@ -1,14 +1,21 @@
 {
     let tasks = [];
-    let hideTaskDoneButton= false;
+    let hideDoneTask = true;
 
     const removeTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            ...tasks.slice(taskIndex + 1)
+        ]
         render();
     };
 
     const toggleTaskDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            { ...tasks[taskIndex], done: !tasks[taskIndex].done },
+            ...tasks.slice(taskIndex + 1),
+        ];
         render();
     };
 
@@ -18,6 +25,23 @@
             { content: newTaskContent }
         ];
         render();
+    };
+
+    const taskHider = (hideTaskDoneButton) => {
+        hideTaskDoneButton.addEventListener = ("click", () => {
+            hideDoneTask = !hideDoneTask;
+            render();
+        })
+    }
+
+    const toggleAllTaskDone = (doAllTasks) => {
+        doAllTasks.addEventListener = ("click", () => {
+            tasks = tasks.map((task) => ({
+                ...task,
+                check: true,
+            }))
+            render();
+        })
     };
 
     const bindRemoveEvents = () => {
@@ -38,6 +62,18 @@
                 toggleTaskDone(taskIndex);
             });
         });
+    };
+
+    const renderButtons = () => {
+        const taskElement = document.querySelector(".js-task")
+        const isEveryTaskDone = tasks.every(({ check }) => check)
+
+        let htmlHeaderButtons = "";
+        htmlHeaderButtons += `
+            <button class="section__headerButtons js-hideTaskDoneButton ${taskElement ? "" : "tasks__item--hidden"}">${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone</button>
+            <button ${isEveryTaskDone === true ? "disabled" : ""} class="section__headerButtons js-doAllTasks ${taskElement ? "" : "tasks__item--hidden"}"> Ukończ wszystkie</button>
+            `;
+        document.querySelector(".js-headerButtons").innerHTML = htmlHeaderButtons
     };
 
     const renderTasks = () => {
@@ -62,12 +98,16 @@
         document.querySelector(".js-tasks").innerHTML = tasksListHTMLContent;
     };
 
-    const renderButtons = () => {
+    const bindButtonsEvents = () => {
+        const doAllTasks = document.querySelector(".js-doAllTasks");
+        if (doAllTasks) {
+            doAllTasks.addEventListener("click", toggleAllTaskDone)
+        };
 
-    };
-
-    const bindButtonsEvents = () =>{
-
+        const hideTaskDoneButton = document.querySelector(".js-hideTaskDoneButton");
+        if (hideTaskDoneButton) {  
+            hideTaskDoneButton.addEventListener("click", taskHider)
+        };
 
     };
 
