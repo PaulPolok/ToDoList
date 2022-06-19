@@ -1,6 +1,6 @@
 {
     let tasks = [];
-    let hideDoneTask = true;
+    let hideDoneTask = false;
 
     const removeTask = (taskIndex) => {
         tasks = [
@@ -31,8 +31,8 @@
         hideTaskDoneButton.addEventListener = ("click", () => {
             hideDoneTask = !hideDoneTask;
             render();
-        })
-    }
+        });
+    };
 
     const toggleAllTaskDone = (doAllTasks) => {
         doAllTasks.addEventListener = ("click", () => {
@@ -41,7 +41,7 @@
                 check: true,
             }))
             render();
-        })
+        });
     };
 
     const bindRemoveEvents = () => {
@@ -76,6 +76,19 @@
         document.querySelector(".js-headerButtons").innerHTML = htmlHeaderButtons
     };
 
+    const bindButtonsEvents = () => {
+        const doAllTasks = document.querySelector(".js-doAllTasks");
+        if (doAllTasks) {
+            doAllTasks.addEventListener("click", toggleAllTaskDone)
+        };
+
+        const hideTaskDoneButton = document.querySelector(".js-hideTaskDoneButton");
+        if (hideTaskDoneButton) {  
+            hideTaskDoneButton.addEventListener("click", taskHider)
+        };
+
+    };
+
     const renderTasks = () => {
         let tasksListHTMLContent = "";
 
@@ -96,19 +109,6 @@
 
         }
         document.querySelector(".js-tasks").innerHTML = tasksListHTMLContent;
-    };
-
-    const bindButtonsEvents = () => {
-        const doAllTasks = document.querySelector(".js-doAllTasks");
-        if (doAllTasks) {
-            doAllTasks.addEventListener("click", toggleAllTaskDone)
-        };
-
-        const hideTaskDoneButton = document.querySelector(".js-hideTaskDoneButton");
-        if (hideTaskDoneButton) {  
-            hideTaskDoneButton.addEventListener("click", taskHider)
-        };
-
     };
 
     const render = () => {
