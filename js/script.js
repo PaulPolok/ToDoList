@@ -89,8 +89,8 @@
 
         let htmlHeaderButtons = "";
         htmlHeaderButtons += `
-            <button class="section__headerButtons js-hideTaskDoneButton ${taskElement ? "" : "tasks__item--hidden"}">${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone</button>
-            <button ${isEveryTaskDone === true ? "disabled" : ""} class="section__headerButtons js-doAllTasks ${taskElement ? "" : "tasks__item--hidden"}"> Ukończ wszystkie</button>
+            <button class="section__headerButton js-hideTaskDoneButton ${taskElement ? "" : "tasks__item--hidden"}">${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone</button>
+            <button ${isEveryTaskDone === true ? "disabled" : ""} class="section__headerButton js-doAllTasks ${taskElement ? "" : "tasks__item--hidden"}"> Ukończ wszystkie</button>
             `;
         document.querySelector(".js-headerButtons").innerHTML = htmlHeaderButtons
     };
